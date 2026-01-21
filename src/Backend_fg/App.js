@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import error_middleware from "./middlerwares/error.middlerware.js";
 
 
 const app= express();
@@ -17,9 +18,10 @@ app.use(cors({
 }))
 
 
+app.use(error_middleware);
+
 
 import healthcheckroute from "./routes/healthcheck.routes.js";
-
 app.use("/via/api/healthcheck/yes", healthcheckroute);
 
 export default app;
